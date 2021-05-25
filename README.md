@@ -5,5 +5,5 @@ Overview of steps to be followed:
 2. Write your mapStateToProps() function
 3. Create the store
 4. Create the reducer
-5. Wrap whichever component needs access to redux store inside '<Provider>' component
+5. Wrap whichever component needs access to redux store inside Provider component
 6. Create the dispatchers
