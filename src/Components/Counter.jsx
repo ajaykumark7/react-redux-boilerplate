@@ -1,12 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Counter extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    incrementValue = () => {
+function Counter(props) {
+    const incrementValue = () => {
         /**
         * STEP 8: Here, we want to perform the INCREMENT action. But. we cannot pass an action directly to a reducer. 
         * Instead, we use the dispatch() method to do this. But how is dispatch(), which is a method of Redux store, available inside this component?
@@ -15,27 +11,23 @@ class Counter extends React.Component {
         * This is simply to let the reducer know which action is to be performed, and also the inputs for that action(which is optional)  
         */
 
-        this.props.dispatch({ type: "INCREMENT" });
+        props.dispatch({ type: "INCREMENT" });
     }
 
-    decrementValue = () => {
-        this.props.dispatch({ type: "DECREMENT" });
+    const decrementValue = () => {
+        props.dispatch({ type: "DECREMENT" });
     }
 
-    render() {
-        return (
-            <div>
-                <button onClick={this.incrementValue}>INCREMENT</button>
-                {/* STEP 2: Once you connect your component to a redux store, all the values it requires will be passed to it via props.
+    return (
+        <div>
+            <button onClick={incrementValue}>INCREMENT</button>
+            {/* STEP 2: Once you connect your component to a redux store, all the values it requires will be passed to it via props.
                 This is because once you use Redux as your state management tool, keeping local component states is not recommended, so as to maintain a 'single source of truth'  
                 */}
-                <p>{this.props.count}</p>
-                <button onClick={this.decrementValue}>DECREMENT</button>
-            </div>
-
-        )
-
-    }
+            <p>{props.count}</p>
+            <button onClick={decrementValue}>DECREMENT</button>
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => ({
