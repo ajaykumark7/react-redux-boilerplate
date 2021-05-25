@@ -9,6 +9,11 @@
  const initialState = {
     count: 0
   }
+
+  /**
+   * If you check closely, you will realize that there is no setState() being called inside the reducer to set its state to the new value
+   * But still, when the state is incremented/decremented by 1. This is because reducers do this tracking internally.
+   */
   function reducer(state = initialState, action) {
     switch (action.type) {
       case "INCREMENT":
