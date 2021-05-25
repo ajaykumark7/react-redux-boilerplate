@@ -6,35 +6,37 @@
  * state=initialState is ES6 syntax which assigns the value of initialState to state when state is 'undefined'
  */
 
- const initialState = {
+const initialState = {
     count: 0
-  }
+}
 
-  /**
-   * If you check closely, you will realize that there is no setState() being called inside the reducer to set its state to the new value
-   * But still, when the state is incremented/decremented by 1. This is because reducers do this tracking internally.
-   */
-  function reducer(state = initialState, action) {
+/**
+ * If you check closely, you will realize that there is no setState() being called inside the reducer to set its state to the new value
+ * But still, when the state is incremented/decremented by 1. This is because reducers do this tracking internally.
+ */
+function reducer(state = initialState, action) {
     switch (action.type) {
-      case "INCREMENT":
-        return {
-          count: state.count + 1
-        };
-      case "DECREMENT":
-        return {
-          count: state.count - 1
-        };
-      /**
-       * The default case is always required for all reducers. This case must return the entire state, unchanged.
-       * This is because there can be multiple reducers for the same Redux store,
-       * and the way Redux works is that it dispatches EACH AND EVERY action to ALL the reducers. 
-       * Hence, each reducer needs a mechanism to return a value for actions that it cannot recognize, 
-       * otherwise it would return 'undefined' which could lead to errors 
-       */
-      default:
-        return state;
+        case "INCREMENT":
+            return {
+                ...state,
+                count: state.count + 1
+            };
+        case "DECREMENT":
+            return {
+                ...state,
+                count: state.count - 1
+            };
+        /**
+         * The default case is always required for all reducers. This case must return the entire state, unchanged.
+         * This is because there can be multiple reducers for the same Redux store,
+         * and the way Redux works is that it dispatches EACH AND EVERY action to ALL the reducers. 
+         * Hence, each reducer needs a mechanism to return a value for actions that it cannot recognize, 
+         * otherwise it would return 'undefined' which could lead to errors 
+         */
+        default:
+            return state;
     };
-  
-  }
 
-  export default reducer;
+}
+
+export default reducer;
