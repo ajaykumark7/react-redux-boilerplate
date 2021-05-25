@@ -51,7 +51,7 @@ Here, we see 2 function calls(denoted by 2 pairs of () ) because connect() is a 
 */
 
 /*
-STEP 3: Redux might be storing multiple values from different components at any point in time.
+STEP 3: A Redux store might be storing multiple values from different components at any point in time.
 To let it know precisely which of those values you want to be passed into your component, you need to pass to the redux store
 a function which maps a redux state variable to the corresponding prop of the component
 */
